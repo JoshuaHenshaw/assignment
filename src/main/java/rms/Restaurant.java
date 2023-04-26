@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Restaurant {
-    static int available = 0;
-    static int reserved = 1;
-    static int occupied = 2;
+    static final int available = 0;
+    static final int reserved = 1;
+    static final int occupied = 2;
 
     private String name;
     private List<Location> locations;

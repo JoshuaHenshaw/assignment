@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Table {
     static int count = 0;
+    static final int available = 0;
+    static final int reserved = 1;
+    static final int occupied = 2;
 
     private Scanner input = new Scanner(System.in);
     private int number;
@@ -16,7 +19,7 @@ public class Table {
     public Table() {
         this.number = count;
         count++;
-        this.state = 0;
+        this.state = available;
         this.reservations = new ArrayList<Reservation>();
         this.orders = new ArrayList<Order>();
     }
@@ -47,7 +50,7 @@ public class Table {
 
     //make this an exception if possible
     public Order takeOrder(Menu menu) {
-        if (this.state == 2) {
+        if (this.state == occupied) {
             System.out.println("Table is occupied.");
             return null;
         }
@@ -77,7 +80,7 @@ public class Table {
         Order newOrder = new Order(items);
         orders.add(newOrder);
         System.out.println("Order complete!");
-        this.state = 2;
+        this.state = occupied;
         return newOrder;
     }
 
